@@ -1,6 +1,6 @@
 import React from 'react';
-import { RichText, Elements } from 'prismic-reactjs';
-import linkResolver from './linkResolver'
+import { Elements } from 'prismic-reactjs';
+import linkResolver from './linkResolver.js'
 
 // -- Function to add unique key to props
 const propsWithUniqueKey = function(props, key) {
@@ -8,7 +8,7 @@ const propsWithUniqueKey = function(props, key) {
 };
 
 // -- HTML Serializer
-export const htmlSerializer = function(type, element, content, children, key) {
+const htmlSerializer = function(type, element, content, children, key) {
 
   var props = {};
 
@@ -107,3 +107,5 @@ export const htmlSerializer = function(type, element, content, children, key) {
       return null;
   }
 };
+
+export default htmlSerializer;

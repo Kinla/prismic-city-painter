@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby'
-import {Link as PrismicLink, RichText, Date} from 'prismic-reactjs';
-import serializer from '../utils/htmlSerializer'
-import Image from 'gatsby-image'
+import {RichText} from 'prismic-reactjs';
+import serializer from '../utils/htmlSerializer.js'
 import Layout from '../components/layout'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -135,7 +134,7 @@ export default ({ data }) => {
                 <div className={`text-center my-3 col-md-12`}>
                 <h2>{service.cta_large[0].title}</h2>
                 <p>{service.cta_large[0].sub_title}</p>
-                <a href={service.cta_large[0].button_url.url} className="btn btn-primary" target="_blank">{service.cta_large[0].button_text}</a>
+                <a href={service.cta_large[0].button_url.url} className="btn btn-primary" target="_blank" rel="noopener noreferrer">{service.cta_large[0].button_text}</a>
                 </div>  
             </div>
             <div className="row mb-3">

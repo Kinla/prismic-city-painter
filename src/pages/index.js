@@ -1,8 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import Image  from 'gatsby-image'
 	
-import { linkResolver } from '../utils/linkResolver'
+import linkResolver from '../utils/linkResolver.js'
 
 import Layout from "../components/layout"
 
@@ -33,7 +32,7 @@ const IndexPage = ({data}) => (
       {data.prismic.allServices.edges.map(({node: service}) => {
           console.log(service.slug)
         return (
-        <li key={service.slug} style={{ flex: '1 45%', maxWidth: '45%', padding: '0', margin: '1rem'}}>
+        <li key={service._meta.uid} style={{ flex: '1 45%', maxWidth: '45%', padding: '0', margin: '1rem'}}>
           <h2 style={{fontSize: '24px'}}>{service.main_header[0].title}</h2>
           <Link to={linkResolver(service._meta)}>See service details</Link>
         </li>          

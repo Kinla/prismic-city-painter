@@ -1,5 +1,5 @@
 // In src/prismic-configuration.js
-export const linkResolver = (doc) => {
+const linkResolver = (doc) => {
 
     console.log(doc)
     // URL for a service type
@@ -9,3 +9,5 @@ export const linkResolver = (doc) => {
     // Backup for all other types
     return '/'
   }
+
+export default linkResolver
