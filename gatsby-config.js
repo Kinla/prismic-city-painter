@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: `.env`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -31,7 +35,7 @@ module.exports = {
       resolve: 'gatsby-source-prismic-graphql',
       options: {
         repositoryName: 'cpdemo', // (REQUIRED, replace with your own)
-        accessToken: process.env.API_TOKEN ||'', // (optional API access token)
+        accessToken: `${process.env.API_KEY}`, // (optional API access token)
         path: '/preview', // (optional preview path. Default: /preview)
         previews: true, // (optional, activated Previews. Default: false)
         pages: [{ // (optional, builds pages dynamically)
