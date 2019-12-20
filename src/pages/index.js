@@ -1,20 +1,46 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, graphql } from "gatsby"
+import Image  from 'gatsby-image'
+	
+import { linkResolver } from '../utils/linkResolver'
 
 import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
 
-const IndexPage = () => (
+export const query = graphql`
+  {
+    prismic {
+        allServices {
+          edges {
+            node {
+              main_header {
+                title
+              }
+              _meta {
+                type
+                uid
+              }              
+            }
+          }
+        }
+      }      
+  }
+`;
+
+const IndexPage = ({data}) => (
   <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
+    <h1>Our Services</h1>
+    <ul style={{ listStyle: 'none', display: 'flex', alignItems: 'space-between'}}>
+      {data.prismic.allServices.edges.map(({node: service}) => {
+          console.log(service.slug)
+        return (
+        <li key={service.slug} style={{ flex: '1 45%', maxWidth: '45%', padding: '0', margin: '1rem'}}>
+          <h2 style={{fontSize: '24px'}}>{service.main_header[0].title}</h2>
+          <Link to={linkResolver(service._meta)}>See service details</Link>
+        </li>          
+        )
+      })}
+    </ul>
+ 
   </Layout>
 )
 
