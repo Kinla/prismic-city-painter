@@ -74,7 +74,7 @@ query MyQuery ($uid: String){
 
 export default ({ data }) => {
     let service = data.prismic.allServices.edges[0].node
-    console.log(service.tips)
+    console.log(service)
     
     return (
         <Layout>
